@@ -2,23 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTube Insights</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>YouTube Insights</h1>
-    <form method="post">
-        <label for="video_url">Enter YouTube URL:</label>
-        <input type="text" id="video_url" name="video_url" required>
-        <button type="submit">Get Video Details</button>
-    </form>
+    <div class="container mt-5">
+        <h1 class="text-center">YouTube Insights</h1>
+        <p class="text-center">Welcome to YouTube Insights! Please enter a YouTube URL below:</p>
+        <form method="post" class="text-center">
+            <div class="form-group">
+                <label for="video_url">YouTube Video URL:</label>
+                <input type="text" id="video_url" name="video_url" class="form-control" placeholder="https://www.youtube.com/watch?v=your_video_id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Insights</button>
+        </form>
 
-    {% if video_details %}
-        <h2>Video Title: {{ video_details.title }}</h2>
-        <p>{{ video_details.description }}</p>
-        <p><strong>Description Summary:</strong> {{ video_details.description_summary }}</p>
-        <p><strong>Views:</strong> {{ video_details.views }}</p>
-        <p><strong>Likes:</strong> {{ video_details.likes }}</p>
-        <p><strong>Comments:</strong> {{ video_details.comments }}</p>
-    {% endif %}
+        {% if video_details %}
+            <h2 class="mt-4">Video Title: {{ video_details.title }}</h2>
+            <p>{{ video_details.description }}</p>
+            <p><strong>Description Summary:</strong> {{ video_details.description_summary }}</p>
+            <p><strong>Views:</strong> {{ video_details.views }}</p>
+            <p><strong>Likes:</strong> {{ video_details.likes }}</p>
+            <p><strong>Comments:</strong> {{ video_details.comments }}</p>
+        {% else %}
+            <p class="text-danger">No video details available. Please check the URL and try again.</p>
+        {% endif %}
+    </div>
 </body>
 </html>
