@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Insights</title>
+</head>
+<body>
+    <h1>YouTube Insights</h1>
+    <form method="post">
+        <label for="video_url">Enter YouTube URL:</label>
+        <input type="text" id="video_url" name="video_url" required>
+        <button type="submit">Get Video Details</button>
+    </form>
+
+    {% if video_details %}
+        <h2>Video Title: {{ video_details.title }}</h2>
+        <p>{{ video_details.description }}</p>
+        <p><strong>Views:</strong> {{ video_details.views }}</p>
+        <p><strong>Likes:</strong> {{ video_details.likes }}</p>
+        <p><strong>Comments:</strong> {{ video_details.comments }}</p>
+    {% endif %}
+</body>
+</html>
